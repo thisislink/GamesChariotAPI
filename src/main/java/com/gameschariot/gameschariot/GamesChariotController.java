@@ -18,8 +18,8 @@ public class GamesChariotController {
         // scraper
         Document doc = Jsoup.connect("https://help.netflix.com/en/node/121442").get();
         Elements listOfGames = doc.select(".tab:eq(1) li a");
-
         HashMap<String, String> allGames = new LinkedHashMap<>();
+        
         for(Element game : listOfGames) {
             allGames.put(game.text(), game.attr("abs:href"));
         }
