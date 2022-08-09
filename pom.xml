@@ -14,7 +14,7 @@
 	<name>gameschariot</name>
 	<description>Web scaper project built using Spring Boot</description>
 	<properties>
-		<java.version>18</java.version>
+		<java.version>18.0.1.1</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
