@@ -38,8 +38,8 @@ jobs:
           mvn clean install
       - name: Heroku Deploy
         env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run:  |
-              heroku plugins: install java
-              heroku deploy: jar target/*.jar --app gameschariotapi
+          HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
+        run: |
+          heroku plugins: install java
+          heroku deploy: jar target/*.jar --app gameschariotapi
         
