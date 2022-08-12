@@ -14,9 +14,9 @@
 	<name>gameschariot</name>
 	<description>Web scaper project built using Spring Boot</description>
 	<properties>
-		<java.version>12</java.version>
-		<maven.compiler.source>3.6.2</maven.compiler.source>
-		<maven.compiler.target>3.6.2</maven.compiler.target>
+		<java.version>18</java.version>
+		<maven.compiler.source>18</maven.compiler.source>
+		<maven.compiler.target>18</maven.compiler.target>
 	</properties>
 	<dependencies>
 		<dependency>
