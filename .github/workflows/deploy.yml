@@ -33,7 +33,7 @@ jobs:
         uses: actions/setup-java@v1
         with: 
           java-version: 18
-          distribution: adopt
+          distribution: 'adopt'
       - name: Install and Build
         run: 
           mvn clean install
@@ -41,6 +41,6 @@ jobs:
         env:
           HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
         run: |
-          heroku plugins: install java
-          heroku deploy: jar target/*.jar --app gameschariotapi
+          heroku plugins:install java
+          heroku deploy:jar target/*.jar --app gameschariotapi
         
