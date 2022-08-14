@@ -14,6 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "*")
 public class GamesChariotController {
     @GetMapping("/")
+    public GamesChariot hello()  {
+        return new GamesChariot("Welcome");
+    }
+
+    @GetMapping("/games")
     public GamesChariot gamesList() throws IOException {
         // scraper
         Document doc = Jsoup.connect("https://help.netflix.com/en/node/121442").get();
