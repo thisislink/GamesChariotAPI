@@ -2,8 +2,6 @@ package com.gameschariot.gameschariot;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-import java.util.Objects;
-
 @ConfigurationProperties("gameschariot")
 public final class GamesChariotConfig {
     private final String apiUrl;
@@ -18,44 +16,22 @@ public final class GamesChariotConfig {
         this.databasePassword = databasePassword;
     }
 
-    public String apiUrl() {
+    public void GamesChariotConfig() {
+    }
+
+    public String getURL() {
         return apiUrl;
     }
 
-    public String databaseServer() {
+    public String getDatabaseServer() {
         return databaseServer;
     }
 
-    public String databaseUsername() {
+    public String getDatabaseUsername() {
         return databaseUsername;
     }
 
-    public String databasePassword() {
+    public String getDatabasePassword() {
         return databasePassword;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == this) return true;
-        if (obj == null || obj.getClass() != this.getClass()) return false;
-        var that = (GamesChariotConfig) obj;
-        return Objects.equals(this.apiUrl, that.apiUrl) &&
-                Objects.equals(this.databaseServer, that.databaseServer) &&
-                Objects.equals(this.databaseUsername, that.databaseUsername) &&
-                Objects.equals(this.databasePassword, that.databasePassword);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(apiUrl, databaseServer, databaseUsername, databasePassword);
-    }
-
-    @Override
-    public String toString() {
-        return "GamesChariotConfig[" +
-                "apiUrl=" + apiUrl + ", " +
-                "databaseServer=" + databaseServer + ", " +
-                "databaseUsername=" + databaseUsername + ", " +
-                "databasePassword=" + databasePassword + ']';
     }
 }

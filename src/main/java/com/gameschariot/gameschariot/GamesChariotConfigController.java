@@ -20,10 +20,10 @@ public class GamesChariotConfigController {
     public Map<String, String> displayConfigProperties() {
 
         return Map.of(
-                "apiUrl", gamesChariotConfig.apiUrl(),
-                "databaseServer", gamesChariotConfig.databaseServer(),
-                "databaseUsername", gamesChariotConfig.databaseUsername(),
-                "databasePassword", gamesChariotConfig.databasePassword()
+                "apiUrl", gamesChariotConfig.getURL(),
+                "databaseServer", gamesChariotConfig.getDatabaseServer(),
+                "databaseUsername", gamesChariotConfig.getDatabaseUsername(),
+                "databasePassword", gamesChariotConfig.getDatabasePassword()
         );
     }
 }
