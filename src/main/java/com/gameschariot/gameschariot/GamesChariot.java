@@ -8,4 +8,7 @@ public class GamesChariot {
     public String getContent() {
         return games;
     }
+    public String welcomeMessage() {
+        return "Welcome";
+    }
 }

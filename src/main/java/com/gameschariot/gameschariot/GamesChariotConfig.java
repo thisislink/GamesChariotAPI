@@ -1,22 +1,30 @@
 package com.gameschariot.gameschariot;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
 
 @ConfigurationProperties("gameschariot")
-public final class GamesChariotConfig {
-    private final String apiUrl;
-    private final String databaseServer;
-    private final String databaseUsername;
-    private final String databasePassword;
+public class GamesChariotConfig {
 
-    public GamesChariotConfig(String apiUrl, String databaseServer, String databaseUsername, String databasePassword) {
-        this.apiUrl = apiUrl;
-        this.databaseServer = databaseServer;
-        this.databaseUsername = databaseUsername;
-        this.databasePassword = databasePassword;
+    GamesChariotConfig gamesChariotConfig;
+    private String apiUrl;
+    private String databaseServer;
+    private String databaseUsername;
+    private String databasePassword;
+
+    public GamesChariotConfig() {
+        this("localhost:8080", "secretserver", "secretusername", "secretpassword");
     }
 
-    public void GamesChariotConfig() {
+    public GamesChariotConfig(String url, String server, String username, String password) {
+        this.apiUrl = url;
+        this.databaseServer = server;
+        this.databaseUsername = username;
+        this.databasePassword = password;
+    }
+
+    public void setGamesChariotConfig(GamesChariotConfig config) {
+        this.gamesChariotConfig = config;
     }
 
     public String getURL() {
@@ -34,4 +42,5 @@ public final class GamesChariotConfig {
     public String getDatabasePassword() {
         return databasePassword;
     }
+
 }

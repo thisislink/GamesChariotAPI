@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "*")
 public class GamesChariotController {
     @GetMapping("/")
-    public GamesChariot hello()  {
-        return new GamesChariot("Welcome");
+    public String hello()  {
+        return new GamesChariot("Welcome").welcomeMessage();
     }
 
     @GetMapping("/games")
