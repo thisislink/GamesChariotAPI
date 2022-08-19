@@ -2,6 +2,9 @@ package com.gameschariot.gameschariot;
 
 import java.io.IOException;
 import java.util.*;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -14,8 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "*")
 public class GamesChariotController {
     @GetMapping("/")
-    public String hello()  {
-        return new GamesChariot("Welcome").welcomeMessage();
+    public JsonObject hello()  {
+        String defaultMessage = "{ \"message\": \"Welcome\" }";
+        JsonObject json = new Gson().fromJson(defaultMessage, JsonObject.class);
+        return json;
     }
 
     @GetMapping("/games")
@@ -23,12 +28,23 @@ public class GamesChariotController {
         // scraper
         Document doc = Jsoup.connect("https://help.netflix.com/en/node/121442").get();
         Elements listOfGames = doc.select(".tab:eq(1) li a");
+        Gson jsoupToJSON = new Gson();
         HashMap<String, String> allGames = new LinkedHashMap<>();
+        ArrayList<String> gameTitles = new ArrayList<>();
+        ArrayList<String> gameLinks = new ArrayList<>();
 
         for(Element game : listOfGames) {
-            allGames.put(game.text(), game.attr("abs:href"));
+            gameTitles.add(game.text());
+            gameLinks.add(game.attr("abs:href"));
+            //allGames.put(game.text(), game.attr("abs:href"));
         }
 
-        return new GamesChariot(allGames.toString());
+        JsonObject jsonObject = new JsonObject();
+        for(int i = 0; i < gameTitles.size(); i++) {
+            jsonObject.addProperty(gameTitles.get(i), gameLinks.get(i));
+        }
+
+        System.out.println(jsonObject);
+        return new GamesChariot(jsonObject);
     }
 }

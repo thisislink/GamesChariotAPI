@@ -1,12 +1,16 @@
 package com.gameschariot.gameschariot;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+
 public class GamesChariot {
-    private final String games;
-    public GamesChariot(String allGames) {
-        this.games = allGames;
+    private final JsonObject gamesList;
+
+    public GamesChariot(JsonObject allGames) {
+        this.gamesList = allGames;
     }
-    public String getContent() {
-        return games;
+    public JsonObject getContent() {
+        return gamesList;
     }
     public String welcomeMessage() {
         return "Welcome";
