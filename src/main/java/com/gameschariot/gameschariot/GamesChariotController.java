@@ -38,13 +38,11 @@ public class GamesChariotController {
             }
         }
 
-        System.out.println(gameTitles);
         JsonObject jsonObject = new JsonObject();
         for(int i = 0; i < gameTitles.size(); i++) {
             jsonObject.addProperty(gameTitles.get(i), gameLinks.get(i));
         }
 
-        System.out.println(jsonObject);
         return new GamesChariot(jsonObject);
     }
 }
