@@ -27,18 +27,18 @@ public class GamesChariotController {
     public GamesChariot gamesList() throws IOException {
         // scraper
         Document doc = Jsoup.connect("https://help.netflix.com/en/node/121442").get();
-        Elements listOfGames = doc.select(".tab:eq(1) li a");
-        Gson jsoupToJSON = new Gson();
-        HashMap<String, String> allGames = new LinkedHashMap<>();
+        Elements listOfGames = doc.select(".tab-content:eq(1) .c-table a");
         ArrayList<String> gameTitles = new ArrayList<>();
         ArrayList<String> gameLinks = new ArrayList<>();
 
         for(Element game : listOfGames) {
-            gameTitles.add(game.text());
-            gameLinks.add(game.attr("abs:href"));
-            //allGames.put(game.text(), game.attr("abs:href"));
+            if(game.text() != "" && game.attr("abs:href") != "") {
+                gameTitles.add(game.text());
+                gameLinks.add(game.attr("abs:href"));
+            }
         }
 
+        System.out.println(gameTitles);
         JsonObject jsonObject = new JsonObject();
         for(int i = 0; i < gameTitles.size(); i++) {
             jsonObject.addProperty(gameTitles.get(i), gameLinks.get(i));
