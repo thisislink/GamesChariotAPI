@@ -32,7 +32,7 @@ public class GamesChariotController {
         ArrayList<String> gameLinks = new ArrayList<>();
 
         for(Element game : listOfGames) {
-            if(game.text() != "" && game.attr("abs:href") != "") {
+            if(!game.text().equals("")) {
                 gameTitles.add(game.text());
                 gameLinks.add(game.attr("abs:href"));
             }
